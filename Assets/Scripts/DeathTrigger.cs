@@ -4,6 +4,8 @@ using System.Collections;
 
 public class DeathTrigger : MonoBehaviour {
 
+	public LayerMask collisionMask;
+
 	// Use this for initialization
 	void Start () {
 	

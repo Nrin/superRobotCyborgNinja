@@ -6,6 +6,7 @@ public class EnemySideToSideBehavior : MonoBehaviour {
 
 	public float speed = 1f;
 	public Transform lgt, rgt, lRay, rRay, lWall, rWall;
+	public LayerMask collisionMask;
 
 	private Transform enemyTransform;
 	private Rigidbody2D enemyRb2d;
@@ -39,10 +40,10 @@ public class EnemySideToSideBehavior : MonoBehaviour {
 	}
 
 	void SetCollisionTriggers() {
-		leftWall = Physics2D.Linecast(lRay.position, lWall.position, 1 << LayerMask.NameToLayer("Ground"));
-		rightWall = Physics2D.Linecast(rRay.position, rWall.position, 1 << LayerMask.NameToLayer("Ground"));
-		leftEdge = Physics2D.Linecast(lRay.position, lgt.position, 1 << LayerMask.NameToLayer("Ground"));
-		rightEdge = Physics2D.Linecast(rRay.position, rgt.position, 1 << LayerMask.NameToLayer("Ground"));
+		leftWall = Physics2D.Linecast(lRay.position, lWall.position, collisionMask);
+		rightWall = Physics2D.Linecast(rRay.position, rWall.position, collisionMask);
+		leftEdge = Physics2D.Linecast(lRay.position, lgt.position, collisionMask);
+		rightEdge = Physics2D.Linecast(rRay.position, rgt.position, collisionMask);
 	}
 
 	void DetectCollision() {
